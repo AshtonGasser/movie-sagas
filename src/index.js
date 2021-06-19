@@ -15,7 +15,7 @@ import axios from "axios";
 function* rootSaga() {
   yield takeEvery("FETCH_MOVIES", fetchAllMovies);
   yield takeEvery("SET_GENRES", fetchAllGenres);
-  yield takeEvery("POST_MOVIES", postAllMovies);
+  yield takeEvery("POST_MOVIES", postNewMovies);
   yield takeEvery("GET_DETAILS", getDetails);
 }
 //app.use('/api/movie', movieRouter);
@@ -53,7 +53,7 @@ function* fetchAllGenres() {
   }
 }
 
-function* postAllMovies(action) {
+function* postNewMovies(action) {
   // post all movies from the
   try {
     yield axios.post("api/movies", action.payload);
@@ -97,6 +97,15 @@ const details = (state = [], action) => {
       return state;
   }
 };
+
+const ad = (state = [], action) => {
+    switch (action.type) {
+      case "SET_DETAILS":
+        return action.payload;
+      default:
+        return state;
+    }
+  };
 // Create one store that all components can use
 const storeInstance = createStore(
   combineReducers({
