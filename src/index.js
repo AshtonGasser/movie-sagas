@@ -32,9 +32,11 @@ function* fetchAllMovies() {
   }
 }
 function* getDetails(action) {
+    console.log('details response', action.payload);
   try {
     //get details for id selected in movie list
-    const response = yield axios.get(`/api/genre/${action.payload}`);
+    const response = yield axios.get(`/api/genre/${action.payload.id}`);
+    console.log('action.payload id', action.payload.id);
     yield put({ type: "SET_DETAILS", payload: response.data });
   } catch (error) {
     console.error(`${error} in get details`);
