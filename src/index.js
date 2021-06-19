@@ -56,7 +56,7 @@ function* fetchAllGenres() {
 function* postNewMovies(action) {
   // post all movies from the
   try {
-    yield axios.post("api/movies", action.payload);
+    yield axios.post("api/movie", action.payload);
     yield put({ type: "FETCH_MOVIES" });
   } catch (error) {
     console.error(`${error} in POST`);

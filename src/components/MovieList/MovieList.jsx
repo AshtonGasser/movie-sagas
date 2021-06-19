@@ -14,17 +14,22 @@ function MovieList() {
 
   const handleClick = (movie) => {
     console.log("clicked poster");
-    console.log('movie clicked:', movie);
+    console.log("movie clicked:", movie);
     dispatch({
       type: "GET_DETAILS",
-      payload:  movie ,
+      payload: movie,
     });
     history.push("/details");
   };
 
+  const handleNext = () => {
+    console.log("clicked add movie");
+    history.push("/addmovie");
+  };
   return (
     <main>
       <h1>MovieList</h1>
+      <button onClick={handleNext}>Add Movie</button>
       <section className="movies">
         {movies.map((movie) => {
           return (
