@@ -6,12 +6,19 @@ function MovieList() {
     const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
+    const genres = useSelector(store => store.genres);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({ type: 'FETCH_MOVIES', });
+        
     }, []);
 
-    const handleNext = () => {
+    const handleNext = (movie) => {
+        console.log(genres);
+        dispatch({
+            type: 'FILTER',
+            payload: {movie}
+        })
         history.push("/details")
     }
 
@@ -23,7 +30,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onClick = {handleNext} src={movie.poster} alt={movie.title}/>
+                            <img onClick = { () => handleNext(movie)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}

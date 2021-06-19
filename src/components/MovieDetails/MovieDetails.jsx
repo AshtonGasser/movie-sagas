@@ -9,7 +9,7 @@ function MovieDetails() {
  const history = useHistory();
 const dispatch = useDispatch(); 
 const movie = useSelector((store) => store.movies);
-
+const genres = useSelector((store) => store.genres);
 
  return(
 
