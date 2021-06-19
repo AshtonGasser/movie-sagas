@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 function AddMovie() {
-  const history = useHistory;
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [newMovie, setNewMovie] = useState({
@@ -28,6 +27,7 @@ function AddMovie() {
       type: "POST_MOVIES",
       payload: newMovie,
     });
+    history.push("/");
   }; //end handleClick
 
   const handleInputs = (key, value) => {
@@ -89,7 +89,7 @@ function AddMovie() {
           </select>
         </div>
         <div>
-        <button onClick={handleBack}>Cancel</button>
+        <button onClick= {handleBack}>Cancel</button>
         
         <button onClick= {handleClick}>Save</button>
         </div>
